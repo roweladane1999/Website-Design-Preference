@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Client Website Preferences</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" 
+  rel="stylesheet">
+  <link rel="stylesheet" href="Styles/Style.css">
+
+  <h1>Client Website Preferences Form</h1>
+
+  <form action="https://formspree.io/f/mnndlnjr" method="POST" enctype="multipart/form-data">
+
+<!-- Personal Info -->
+<label>Personal Information</label>
+<div class="personal-info-vertical" style="display: flex; flex-direction: column; gap: 1rem;">
+  <div class="info-box">
+    <label for="firstName">First Name</label>
+    <input type="text" name="First Name" required />
+  </div>
+  <div class="info-box">
+    <label for="middleName">Middle Name</label>
+    <input type="text" name="Middle Name" />
+  </div>
+  <div class="info-box">
+    <label for="lastName">Last Name</label>
+    <input type="text" name="Last Name" required />
+  </div>
+  <div class="info-box">
+    <label for="extension">Extension</label>
+    <input type="text" name="Name Extension" placeholder="e.g., Jr., Sr." />
+  </div>
+</div>
+
+
+
+    <!-- Color Preferences -->
+    <label>Color Preferences (Pick Up to 3)</label>
+    <p>Need help finding the perfect colors? Visit <a href="https://coolors.co/" target="_blank">coolors.co</a></p>
+
+    <div class="color-picker-vertical">
+      <div class="color-picker-row">
+        <input type="color" id="color1" value="#1E90FF" onchange="updateColorInput(1)">
+        <div class="hex-wrapper">
+          <span>#</span>
+          <input type="text" id="color1-input" maxlength="6" value="1E90FF" oninput="updateColorPicker(1)">
+        </div>
+      </div>
+
+      <div class="color-picker-row">
+        <input type="color" id="color2" value="#32CD32" onchange="updateColorInput(2)">
+        <div class="hex-wrapper">
+          <span>#</span>
+          <input type="text" id="color2-input" maxlength="6" value="32CD32" oninput="updateColorPicker(2)">
+        </div>
+      </div>
+
+      <div class="color-picker-row">
+        <input type="color" id="color3" value="#FF4500" onchange="updateColorInput(3)">
+        <div class="hex-wrapper">
+          <span>#</span>
+          <input type="text" id="color3-input" maxlength="6" value="FF4500" oninput="updateColorPicker(3)">
+        </div>
+      </div>
+    </div>
+
+    <!-- Theme Preference -->
+    <label for="theme">Preferred Theme</label>
+    <select name="Theme">
+      <option value="Minimalist">Minimalist</option>
+      <option value="Loud">Loud & Bold</option>
+      <option value="Sport">Sporty</option>
+      <option value="Corporate">Corporate</option>
+      <option value="Elegant">Elegant</option>
+    </select>
+
+    <!-- Sitelinks -->
+    <label>Select Desired Sitelinks (You can choose multiple)</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="Sitelinks[]" value="Home" /> Home</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="About Us" /> About Us</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="Services" /> Services</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="Products" /> Products</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="Contact Us" /> Contact Us</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="FAQs" /> FAQs</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="Blog" /> Blog</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="Testimonials" /> Testimonials</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="Careers" /> Careers</label>
+      <label><input type="checkbox" name="Sitelinks[]" value="Gallery" /> Gallery</label>
+    </div>
+
+    <!-- Call to Action -->
+    <label>Select Preferred Call to Action (Choose one or more)</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="Call to Action[]" value="Contact Us Now" /> Contact Us Now</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Get a Free Quote" /> Get a Free Quote</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Book an Appointment" /> Book an Appointment</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Shop Now" /> Shop Now</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Learn More" /> Learn More</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Sign Up Today" /> Sign Up Today</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Download Now" /> Download Now</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Join the Community" /> Join the Community</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Get Started" /> Get Started</label>
+      <label><input type="checkbox" name="Call to Action[]" value="Request Demo" /> Request Demo</label>
+    </div>
+
+    <!-- Logo Upload -->
+    <label for="logo">Upload Your Logo</label>
+    <input type="file" name="Logo Upload" accept="image/*" />
+
+    <label>Would you like the logo improved?</label>
+    <select name="Logo Improvement">
+      <option value="No">No</option>
+      <option value="Yes">Yes</option>
+    </select>
+
+    <!-- Image Uploads -->
+    <label for="website-images">Upload Images for Your Website (Max 100)</label>
+    <input type="file" id="website-images" name="website-images[]" accept="image/*" multiple required onchange="checkImageLimit(this)">
+    <small>You can upload up to 100 images.</small>
+
+    <!-- Target Audience -->
+    <label for="audience">Target Audience</label>
+    <textarea name="Target Audience" rows="2" placeholder="e.g., Small businesses, Gen Z audience, Tech users"></textarea>
+
+    <!-- Features -->
+    <label>Desired Website Features</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="Features[]" value="Blog" /> Blog</label>
+      <label><input type="checkbox" name="Features[]" value="E-commerce" /> E-commerce</label>
+      <label><input type="checkbox" name="Features[]" value="Contact Form" /> Contact Form</label>
+      <label><input type="checkbox" name="Features[]" value="Gallery" /> Image Gallery</label>
+      <label><input type="checkbox" name="Features[]" value="Testimonials" /> Testimonials</label>
+      <label><input type="checkbox" name="Features[]" value="Booking System" /> Booking System</label>
+      <label><input type="checkbox" name="Features[]" value="Custom Feature" /> Others:</label>
+      <input type="text" name="Other Features" placeholder="Specify other features..." />
+    </div>
+
+    <!-- Competitor Websites -->
+    <label for="competitors">Inspiration or Competitor Sites</label>
+    <textarea name="Competitor Sites" rows="3" placeholder="List URLs or descriptions here..."></textarea>
+
+    <!-- Notes -->
+    <label for="notes">Additional Notes or Instructions</label>
+    <textarea name="Notes" rows="4"></textarea>
+
+    <!-- Submit Button -->
+    <button type="submit" class="submit-btn">Submit</button>
+  </form>
+
+  <!-- Scripts -->
+  <script>
+    function updateColorInput(index) {
+      const colorInput = document.getElementById(`color${index}`);
+      const textInput = document.getElementById(`color${index}-input`);
+      textInput.value = colorInput.value.replace('#', '');
+    }
+
+    function updateColorPicker(index) {
+      const colorInput = document.getElementById(`color${index}`);
+      const textInput = document.getElementById(`color${index}-input`);
+      const colorValue = `#${textInput.value.trim()}`;
+      if (/^#[0-9A-Fa-f]{6}$/.test(colorValue)) {
+        colorInput.value = colorValue;
+      }
+    }
+
+    function checkImageLimit(input) {
+      if (input.files.length > 100) {
+        alert("You can only upload up to 100 images.");
+        input.value = "";
+      }
+    }
+  </script>
+
+</body>
+</html>
